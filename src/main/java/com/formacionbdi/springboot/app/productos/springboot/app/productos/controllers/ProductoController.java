@@ -29,41 +29,31 @@ public class ProductoController {
   @GetMapping("/listar")
   public List<Producto> listar() {
     return productoService.findAll().stream().map(producto -> {
-      //producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
-      producto.setPort(port);
       return producto;
     }).collect(Collectors.toList());
   }
 
   @GetMapping("/listar/{typeProduct}")
   public List<Producto> listarTypeProduct(@PathVariable String typeProduct) {
-    return productoService.findAll().stream()
-      .filter(producto -> producto.getTypeProduct().equalsIgnoreCase(typeProduct))
-      .peek(producto -> producto.setPort(port))
+    return productoService.findByTypeProduct().stream()
       .collect(Collectors.toList());
   }
 
   @GetMapping("/listar/precio/{price}")
   public List<Producto> listarRangeOfPrice(@PathVariable Double price) {
-    return productoService.findAll().stream()
-      .filter(producto -> producto.getPrice() > price)
-      .peek(producto -> producto.setPort(port))
+    return productoService.findByRangeOfPrice().stream()
       .collect(Collectors.toList());
   }
 
   @GetMapping("/listar/byName/{name}")
   public List<Producto> listarByName(@PathVariable String name) {
-    return productoService.findAll().stream()
-      .filter(producto -> producto.getNameProduct().toLowerCase().contains(name.toLowerCase()))
-      .peek(producto -> producto.setPort(port))
+    return productoService.findByname().stream()
       .collect(Collectors.toList());
   }
 
   @GetMapping("/ver/{id}")
   public Producto detalle(@PathVariable Long id) {
     Producto producto = productoService.findById(id);
-    //producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
-    producto.setPort(port);
     return producto;
   }
   

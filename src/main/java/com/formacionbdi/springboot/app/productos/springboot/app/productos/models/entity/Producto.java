@@ -1,16 +1,11 @@
 package com.formacionbdi.springboot.app.productos.springboot.app.productos.models.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -57,12 +52,12 @@ public class Producto implements Serializable {
   public void setPrice(Double price) {
     this.price = price;
   }
-  public Integer getPort() {
+  /* public Integer getPort() {
     return port;
   }
   public void setPort(Integer port) {
     this.port = port;
-  }
+  } */
 
   private static final long serialVersionUID = 1285454306356845809L;
 }
