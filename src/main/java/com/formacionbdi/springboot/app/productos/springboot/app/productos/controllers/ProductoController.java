@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formacionbdi.springboot.app.productos.springboot.app.productos.models.entity.Producto;
 import com.formacionbdi.springboot.app.productos.springboot.app.productos.models.service.IProductoService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -56,5 +59,12 @@ public class ProductoController {
     Producto producto = productoService.findById(id);
     return producto;
   }
+
+  @GetMapping("/guardar")
+  public ResponseEntity<String> guardarProducto(@RequestParam Producto producto) {
+    productoService.saveProduct(producto);
+      return ResponseEntity.ok("Producto guardado exitosamente");
+  }
+  
   
 }

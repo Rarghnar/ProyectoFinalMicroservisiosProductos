@@ -11,4 +11,5 @@ public interface IProductoService {
   public List<Producto> findByRangeOfPrice();
   public List<Producto> findByname();
   public Producto findById(Long id);
+  public void saveProduct(Producto producto);
 }

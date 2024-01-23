@@ -24,9 +24,6 @@ public class Producto implements Serializable {
 
   private Double price;
   
-  @Transient
-  private Integer port;
-  
   public Long getId() {
     return id;
   }
@@ -52,12 +49,6 @@ public class Producto implements Serializable {
   public void setPrice(Double price) {
     this.price = price;
   }
-  /* public Integer getPort() {
-    return port;
-  }
-  public void setPort(Integer port) {
-    this.port = port;
-  } */
 
   private static final long serialVersionUID = 1285454306356845809L;
 }
